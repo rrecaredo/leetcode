@@ -39,6 +39,24 @@ Constraints:
 -1000 <= nums[i] <= 1000
 */
 
+/*
+My first solution uses two separate arrays of the same size of the original array.
+A totalFw array, that for every element, it holds the value of the sum of elements at its left.
+A totalBw array, that for every element, it holds the value of the sum of elements at its right.
+It then uses these 2 arrays ro evaluate at every position of the array if the sum from the
+left matches the sum from the right.
+If no match is found, it returns -1, otherwise it returns the position of the matched element.
+
+                                *
+Original array  : [ 1,  7,  3,  6,  5,  6]
+Total Forward   : [ 0,  1,  8, 11, 17, 23]
+Total Backwards : [27, 20, 17, 11,  6,  0]
+
+Solution is 3 because totalFw[2] = 17 and totalBw[4] = 17
+
+Time complexity is O(n) + O(n) + O(n) which is O(3n) -> O(n)
+Extra space complexity is O(2n) -> O(n)
+*/
 function pivotIndex(nums: number[]): number {
   let totalFw = 0;
   let totalBw = 0;
@@ -59,14 +77,78 @@ function pivotIndex(nums: number[]): number {
   return (i > n) ? -1 : i;
 }
 
-assertEquals(pivotIndex([1, 7, 3, 6, 5, 6]), 3);
-assertEquals(pivotIndex([2, 7, 5, 3, 2, 6, 5, 6]), 4);
-assertEquals(pivotIndex([1, 2, 3]), -1);
-assertEquals(pivotIndex([2, 1, -1]), 0);
-assertEquals(pivotIndex([-1, -1, -1, -1, 0, 0]), -1);
-assertEquals(
-  pivotIndex(
-    [-1, -1, -1, 1, 1, 1],
-  ),
-  -1,
-);
+/*
+This is a much simpler solution and it uses less space and requires less
+iterations.
+First it aggregates the total number of elements into a sum variable.
+Then it loops through the array and because it knows the total sum, the current number
+and it build the leftSum progressively, it can calculate if the left sum matches
+the right sum.
+
+Original array  : [ 1,  7,  3,  6,  5,  6]
+Total sum: 28
+
+Cold run:
+
+i: 0
+n[i]: 1
+leftSum: 0
+rightSum: 28 - 1 - 0 = 27
+27 != 0
+
+i: 1
+n[i]: 7
+leftSum: 1
+rightSum: 28 - 7 - 1 = 20
+20 != 1
+
+i: 2
+n[i]: 3
+leftSum: 8
+rightSum: 28 - 8 - 3 = 17
+17 != 8
+
+i: 3
+n[i]: 6
+leftSum: 11
+rightSum: 28 - 6 - 11 = 11
+11 == 11
+
+Time complexity: O(n)
+Extra space complexity: O(1)
+
+*/
+function pivotIndexOptimized(nums: number[]): number {
+  const n = nums.length;
+  const sum = nums.reduce((acc, curr) => acc + curr, 0);
+  let leftSum = 0;
+
+  for (let i = 0; i < n; i++) {
+    const rightSum = sum - nums[i] - leftSum;
+
+    if (rightSum === leftSum) return i;
+
+    leftSum += nums[i];
+  }
+
+  return -1;
+}
+
+type PivotIndexFn = (nums: number[]) => number;
+
+function assert(fn: PivotIndexFn) {
+  assertEquals(fn([1, 7, 3, 6, 5, 6]), 3);
+  assertEquals(fn([2, 7, 5, 3, 2, 6, 5, 6]), 4);
+  assertEquals(fn([1, 2, 3]), -1);
+  assertEquals(fn([2, 1, -1]), 0);
+  assertEquals(fn([-1, -1, -1, -1, 0, 0]), -1);
+  assertEquals(
+    fn(
+      [-1, -1, -1, 1, 1, 1],
+    ),
+    -1,
+  );
+}
+
+assert(pivotIndex);
+assert(pivotIndexOptimized);
