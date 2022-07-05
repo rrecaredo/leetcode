@@ -41,10 +41,9 @@ Space complexity: O(n)
 function isIsomorphic(s: string, t: string): boolean {
   const left = new Map();
   const right = new Map();
-  const n = s.length;
   let updatedT = "";
 
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < s.length; i++) {
     if (left.has(s[i])) {
       updatedT = updatedT.concat(left.get(s[i]));
     } else if (!right.has(t[i])) {
