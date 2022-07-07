@@ -1,3 +1,5 @@
+import { arrayToList } from "../utils/linked-list.js";
+
 /*
 You are given the heads of two sorted linked lists list1 and list2.
 
@@ -26,16 +28,6 @@ The number of nodes in both lists is in the range [0, 50].
 Both list1 and list2 are sorted in non-decreasing order.
 */
 
-class ListNode {
-  val;
-  next;
-
-  constructor(val, next) {
-    this.val = val === undefined ? 0 : val;
-    this.next = next === undefined ? null : next;
-  }
-}
-
 function mergeTwoLists(list1, list2) {
   if (list1 == null && list2 == null) {
     return null;
@@ -52,15 +44,15 @@ function mergeTwoLists(list1, list2) {
       final.next = mergeTwoLists(list1.next, list2);
     }
   } else if (list1 == null) {
-    return l2;
+    return list2;
   } else {
-    return l1;
+    return list1;
   }
 
   return final;
 }
 
-const l1 = new ListNode(1, new ListNode(2, new ListNode(4)));
-const l2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+const list1 = arrayToList([1, 2, 4]);
+const list2 = arrayToList([1, 3, 4]);
 
-console.log(JSON.stringify(mergeTwoLists(l1, l2), null, 2));
+console.log(JSON.stringify(mergeTwoLists(list1, list2), null, 2));
