@@ -52,11 +52,9 @@ function mergeTwoLists(list1, list2) {
       final.next = mergeTwoLists(list1.next, list2);
     }
   } else if (list1 == null) {
-    final.val = list2.val;
-    final.next = mergeTwoLists(list1, list2.next);
+    return l2;
   } else {
-    final.val = list1.val;
-    final.next = mergeTwoLists(list1.next, list2);
+    return l1;
   }
 
   return final;
