@@ -1,4 +1,4 @@
-import { assert, assertFalse } from "../deps.ts";
+import { expect } from "earljs";
 
 /*
 Given two strings s and t, determine if they are isomorphic.
@@ -84,11 +84,11 @@ function isIsomorphicOptimised(s: string, t: string) {
 type IsIsomorphicFn = (s: string, t: string) => boolean;
 
 function doAssert(fn: IsIsomorphicFn) {
-  assert(fn("egg", "add"));
-  assert(fn("paper", "title"));
-  assertFalse(fn("foo", "bar"));
-  assertFalse(fn("badc", "bada"));
-  assertFalse(fn("egcd", "adfd"));
+  expect(fn("egg", "add")).toBeTruthy();
+  expect(fn("paper", "title")).toBeTruthy();
+  expect(fn("foo", "bar")).toBeFalsy();
+  expect(fn("badc", "bada")).toBeFalsy();
+  expect(fn("egcd", "adfd")).toBeFalsy();
 }
 
 doAssert(isIsomorphic);

@@ -1,4 +1,4 @@
-import { assert, assertFalse } from "../deps.ts";
+import { expect } from "earljs";
 
 /*
 Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
@@ -109,10 +109,10 @@ class SequenceCalculator {
   }
 }
 
-assert(isSubsequence("abc", "ahbgdc"));
-assertFalse(isSubsequence("axc", "ahbgdc"));
+expect(isSubsequence("abc", "ahbgdc")).toBeTruthy();
+expect(isSubsequence("axc", "ahbgdc")).toBeFalsy();
 
 const sequenceCalculator = new SequenceCalculator("ahbgdca");
 
-assert(sequenceCalculator.isSubsequence("abc"));
-assertFalse(sequenceCalculator.isSubsequence("axc"));
+expect(sequenceCalculator.isSubsequence("abc")).toBeTruthy();
+expect(sequenceCalculator.isSubsequence("axc")).toBeFalsy();

@@ -1,3 +1,4 @@
+import { expect } from "earljs";
 import { arrayToList } from "../utils/linked-list.js";
 
 /*
@@ -54,5 +55,6 @@ function mergeTwoLists(list1, list2) {
 
 const list1 = arrayToList([1, 2, 4]);
 const list2 = arrayToList([1, 3, 4]);
+const expectation = arrayToList([1, 1, 2, 3, 4, 4]);
 
-console.log(JSON.stringify(mergeTwoLists(list1, list2), null, 2));
+expect(mergeTwoLists(list1, list2), null, 2));

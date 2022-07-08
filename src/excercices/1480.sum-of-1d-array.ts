@@ -1,4 +1,4 @@
-import { assertEquals } from "../deps.ts";
+import { expect } from "earljs";
 
 /*
 Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
@@ -38,7 +38,8 @@ function runningSum(nums: number[]): number[] {
   return sums;
 }
 
-assertEquals(runningSum([1]), [1]);
-assertEquals(runningSum([1, 2, 3, 4]), [1, 3, 6, 10]);
-assertEquals(runningSum([1, 1, 1, 1, 1]), [1, 2, 3, 4, 5]);
-assertEquals(runningSum([3, 1, 2, 10, 1]), [3, 4, 6, 16, 17]);
+expect(runningSum([1])).toEqual([1]);
+expect(runningSum([1, 2, 3, 4])).toEqual([1, 3, 6, 10]);
+expect(runningSum([1, 1, 1, 1, 1])).toEqual([1, 2, 3, 4, 5]);
+expect(runningSum([3, 1, 2, 10, 1])).toEqual([3, 4, 6, 16, 17]);
+expect(runningSum([3, 1, 2, 10, 1])).toEqual([3, 4, 6, 16, 17]);

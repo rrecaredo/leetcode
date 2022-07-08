@@ -1,4 +1,4 @@
-import { assertEquals } from "../deps.ts";
+import { expect } from "earljs";
 
 /*
 Given an array of integers nums, calculate the pivot index of this array.
@@ -137,17 +137,12 @@ function pivotIndexOptimized(nums: number[]): number {
 type PivotIndexFn = (nums: number[]) => number;
 
 function assert(fn: PivotIndexFn) {
-  assertEquals(fn([1, 7, 3, 6, 5, 6]), 3);
-  assertEquals(fn([2, 7, 5, 3, 2, 6, 5, 6]), 4);
-  assertEquals(fn([1, 2, 3]), -1);
-  assertEquals(fn([2, 1, -1]), 0);
-  assertEquals(fn([-1, -1, -1, -1, 0, 0]), -1);
-  assertEquals(
-    fn(
-      [-1, -1, -1, 1, 1, 1],
-    ),
-    -1,
-  );
+  expect(fn([1, 7, 3, 6, 5, 6])).toEqual(3);
+  expect(fn([2, 7, 5, 3, 2, 6, 5, 6])).toEqual(4);
+  expect(fn([1, 2, 3])).toEqual(-1);
+  expect(fn([2, 1, -1])).toEqual(0);
+  expect(fn([-1, -1, -1, -1, 0, 0])).toEqual(-1);
+  expect(fn([-1, -1, -1, 1, 1, 1])).toEqual(-1);
 }
 
 assert(pivotIndex);
