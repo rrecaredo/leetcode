@@ -56,6 +56,25 @@ function _middleNode(head, count) {
 }
 
 /*
+Approach 2: Using 2 pointers, one fast and one slow
+When traversing the list with a pointer slow, make another pointer fast that traverses twice as fast.
+When fast reaches the end of the list, slow must be in the middle.
+
+Time complexity: O(n)
+Space complexity: O(1)
+*/
+function middleNodeTwoPointers(head) {
+  let slow = head;
+  let fast = head;
+
+  while (fast != null && fast.next != null) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  return slow;
+}
+
+/*
 This is another solution I wrote for fun only. It is probably how I would implement
 it in real life (recursion in javascript is rarely a good idea).
 
@@ -84,5 +103,11 @@ function middleNodeWithHash(head) {
 const list1 = arrayToList([1, 2, 3, 4, 5]);
 const list2 = arrayToList([1, 2, 3, 4, 5, 6]);
 
+expect(middleNode(list1)).toEqual(arrayToList([3, 4, 5]));
+expect(middleNode(list2)).toEqual(arrayToList([4, 5, 6]));
+
 expect(middleNodeWithHash(list1)).toEqual(arrayToList([3, 4, 5]));
 expect(middleNodeWithHash(list2)).toEqual(arrayToList([4, 5, 6]));
+
+expect(middleNodeTwoPointers(list1)).toEqual(arrayToList([3, 4, 5]));
+expect(middleNodeTwoPointers(list2)).toEqual(arrayToList([4, 5, 6]));
