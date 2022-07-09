@@ -1,5 +1,5 @@
-import { expect } from "earljs";
-import { arrayToList } from "../utils/linked-list.js";
+import { expect } from 'earljs';
+import { arrayToList } from '../utils/linked-list.js';
 
 /*
 You are given the heads of two sorted linked lists list1 and list2.
@@ -29,6 +29,10 @@ The number of nodes in both lists is in the range [0, 50].
 Both list1 and list2 are sorted in non-decreasing order.
 */
 
+/*
+Time complexity: O(n + m)
+Space complexity: O(n + m)
+*/
 function mergeTwoLists(list1, list2) {
   if (list1 == null && list2 == null) {
     return null;
@@ -57,4 +61,4 @@ const list1 = arrayToList([1, 2, 4]);
 const list2 = arrayToList([1, 3, 4]);
 const expectation = arrayToList([1, 1, 2, 3, 4, 4]);
 
-expect(mergeTwoLists(list1, list2), null, 2));
+expect(mergeTwoLists(list1, list2)).toEqual(expectation);

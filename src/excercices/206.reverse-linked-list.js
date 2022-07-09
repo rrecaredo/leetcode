@@ -66,6 +66,10 @@ Curr: null
 
 */
 
+/*
+Time complexity: O(n)
+Space complexity: O(1)
+*/
 function reverseList(head) {
   if (head == null || head.next == null) return head;
 

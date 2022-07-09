@@ -1,4 +1,4 @@
-import { expect } from "earljs";
+import { expect } from 'earljs';
 
 /*
 Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
@@ -81,8 +81,8 @@ class SequenceCalculator {
 
     for (let i = 0; i < source.length; i++) {
       if (source[i] in this.hash) {
-        const foundIndex = this.hash[source[i]].find((s) =>
-          s > currentTargetIndex
+        const foundIndex = this.hash[source[i]].find(
+          (s) => s > currentTargetIndex
         );
 
         if (foundIndex !== undefined) {
@@ -109,10 +109,10 @@ class SequenceCalculator {
   }
 }
 
-expect(isSubsequence("abc", "ahbgdc")).toBeTruthy();
-expect(isSubsequence("axc", "ahbgdc")).toBeFalsy();
+expect(isSubsequence('abc', 'ahbgdc')).toBeTruthy();
+expect(isSubsequence('axc', 'ahbgdc')).toBeFalsy();
 
-const sequenceCalculator = new SequenceCalculator("ahbgdca");
+const sequenceCalculator = new SequenceCalculator('ahbgdca');
 
-expect(sequenceCalculator.isSubsequence("abc")).toBeTruthy();
-expect(sequenceCalculator.isSubsequence("axc")).toBeFalsy();
+expect(sequenceCalculator.isSubsequence('abc')).toBeTruthy();
+expect(sequenceCalculator.isSubsequence('axc')).toBeFalsy();

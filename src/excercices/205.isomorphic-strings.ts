@@ -1,4 +1,4 @@
-import { expect } from "earljs";
+import { expect } from 'earljs';
 
 /*
 Given two strings s and t, determine if they are isomorphic.
@@ -41,7 +41,7 @@ Space complexity: O(n)
 function isIsomorphic(s: string, t: string): boolean {
   const left = new Map();
   const right = new Map();
-  let updatedT = "";
+  let updatedT = '';
 
   for (let i = 0; i < s.length; i++) {
     if (left.has(s[i])) {
@@ -84,11 +84,11 @@ function isIsomorphicOptimised(s: string, t: string) {
 type IsIsomorphicFn = (s: string, t: string) => boolean;
 
 function doAssert(fn: IsIsomorphicFn) {
-  expect(fn("egg", "add")).toBeTruthy();
-  expect(fn("paper", "title")).toBeTruthy();
-  expect(fn("foo", "bar")).toBeFalsy();
-  expect(fn("badc", "bada")).toBeFalsy();
-  expect(fn("egcd", "adfd")).toBeFalsy();
+  expect(fn('egg', 'add')).toBeTruthy();
+  expect(fn('paper', 'title')).toBeTruthy();
+  expect(fn('foo', 'bar')).toBeFalsy();
+  expect(fn('badc', 'bada')).toBeFalsy();
+  expect(fn('egcd', 'adfd')).toBeFalsy();
 }
 
 doAssert(isIsomorphic);

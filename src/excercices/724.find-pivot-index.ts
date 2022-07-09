@@ -1,4 +1,4 @@
-import { expect } from "earljs";
+import { expect } from 'earljs';
 
 /*
 Given an array of integers nums, calculate the pivot index of this array.
@@ -62,8 +62,11 @@ function pivotIndex(nums: number[]): number {
   let totalBw = 0;
   const n = nums.length - 1;
 
-  const sumFw = nums.map((num) => totalFw += num);
-  const sumBw = nums.reverse().map((num) => totalBw += num).reverse();
+  const sumFw = nums.map((num) => (totalFw += num));
+  const sumBw = nums
+    .reverse()
+    .map((num) => (totalBw += num))
+    .reverse();
 
   let i = 0;
 
@@ -74,7 +77,7 @@ function pivotIndex(nums: number[]): number {
     if (leftCount === rightCount) break;
   }
 
-  return (i > n) ? -1 : i;
+  return i > n ? -1 : i;
 }
 
 /*
