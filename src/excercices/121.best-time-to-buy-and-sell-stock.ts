@@ -45,7 +45,7 @@ function maxProfit(prices: number[]) {
     if (prices.length === 1) return 0;
 
     let maxProfitFound = 0;
-    let minPrice = 0;
+    let minPrice = prices[0];
 
     for (let i = 1; i < prices.length; i++) {
         maxProfitFound = Math.max(maxProfitFound, prices[i] - minPrice);
