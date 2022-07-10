@@ -1,4 +1,5 @@
 import { expect } from 'earljs';
+import { TreeNode } from '../structures/tree';
 
 /*
 Given the root of an n-ary tree, return the preorder traversal of its nodes' values.
@@ -20,42 +21,6 @@ The number of nodes in the tree is in the range [0, 104].
 0 <= Node.val <= 104
 The height of the n-ary tree is less than or equal to 1000.
 */
-
-class TreeNode {
-    static buildTreeFromArray(arr: (number | null)[]) {
-        if (arr.length === 1) {
-            return new TreeNode(arr[0], []);
-        }
-
-        let root = new TreeNode(arr[0], []);
-        let i = 1;
-
-        if (arr[i] !== null) {
-            return root;
-        }
-
-        i++;
-
-        let current = root;
-        const queue = [];
-
-        while (i < arr.length) {
-            if (arr[i] !== null) {
-                let newChild = new TreeNode(arr[i], []);
-                current.children.push(newChild);
-                queue.unshift(newChild);
-            } else {
-                current = queue.pop();
-            }
-
-            i++;
-        }
-
-        return root;
-
-    }
-    constructor(public val: number, public children: TreeNode[]) { }
-};
 
 /*
 My approach was to use an iterative solution. Overall, I try to not use recursion in
