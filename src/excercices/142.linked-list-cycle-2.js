@@ -1,3 +1,4 @@
+import { assert } from 'console';
 import { expect } from 'earljs';
 import { ListNode } from '../structures/linked-list.js';
 import { arrayToList } from '../utils/linked-list.js';
@@ -185,7 +186,7 @@ node2.next = node3;
 node3.next = node4;
 node4.next = node2;
 
-console.log(detectCycleFloyd(node1));
+expect(detectCycleFloyd(node1).val).toEqual(2);
 
 /*
 (3) → (2)  → (0)
