@@ -9,3 +9,4 @@ import './excercices/121.best-time-to-buy-and-sell-stock.ts';
 import './excercices/409.longest-palindrome.ts';
 import './excercices/589.n-ary-preorder-traversal.ts'
 import './excercices/102.binary-tree-level-order-traversal.ts'
+import './excercices/704.binary-search.ts';
