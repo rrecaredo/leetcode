@@ -10,3 +10,4 @@ import './excercices/409.longest-palindrome.ts';
 import './excercices/589.n-ary-preorder-traversal.ts'
 import './excercices/102.binary-tree-level-order-traversal.ts'
 import './excercices/704.binary-search.ts';
+import './excercices/278.first-bad-version.ts';
