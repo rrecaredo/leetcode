@@ -64,6 +64,42 @@ function _levelOrder(root: BinaryTree, list: number[][] = [], level = 1) {
     return list;
 }
 
+/*
+I like the iterative version much better.
+It does noe even require an extra level variable. Instead, it uses a queue
+for storing the nodes we want to visit next. Because of this, we are always
+sure that during each iteration, we unqueue all elements from a level and,
+and enqueue all their children for the next iteration.
+
+Time complexity: O(n)
+Space complexity: O(h)
+*/
+function levelOrderIterative(root: BinaryTree) {
+    if (!root) {
+        return [];
+    }
+    const queue = [];
+    queue.push(root);
+    const result = [];
+
+    while (queue.length > 0) {
+        const size = queue.length;
+        const temp = [];
+        for (let i = 0; i < size; i++) {
+            const node = queue.shift();
+            temp.push(node.val);
+            if (node.left) {
+                queue.push(node.left);
+            }
+            if (node.right) {
+                queue.push(node.right);
+            }
+        }
+        result.push(temp);
+    }
+    return result;
+};
+
 const tree1 = BinaryTree.buildTreeFromArray([3, 9, 20, null, null, 15, 7]);
 const expect1 = [[3], [9, 20], [15, 7]];
 
@@ -72,12 +108,3 @@ const expect2 = [[1], [2, 3], [4, 5]];
 
 expect(levelOrder(tree1)).toEqual(expect1);
 expect(levelOrder(tree2)).toEqual(expect2);
-
-/*
-
-          1
-        2   3
-      4  n n  5
-
-
-*/
