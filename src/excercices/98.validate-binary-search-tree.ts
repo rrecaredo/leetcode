@@ -1,6 +1,5 @@
 import { expect } from 'earljs';
-import { Stack } from './../structures/Stack';
-import { BinaryTree, TreeNode } from './../structures/tree';
+import { BinaryTree } from './../structures/tree';
 /*
 Given the root of a binary tree, determine if it is a valid binary search tree (BST).
 
