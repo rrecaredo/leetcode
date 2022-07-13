@@ -13,3 +13,4 @@ import './excercices/704.binary-search.ts';
 import './excercices/278.first-bad-version.ts';
 import './excercices/98.validate-binary-search-tree.ts';
 import './excercices/235.lowest-common-ancestor.ts';
+import './excercices/733.flood-fill.ts';
