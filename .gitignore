@@ -102,4 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Other
+.DS_STORE
 .idea
