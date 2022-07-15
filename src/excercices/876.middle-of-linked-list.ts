@@ -1,5 +1,6 @@
 import { expect } from 'earljs';
-import { arrayToList } from '../utils/linked-list.js';
+import { ListNode } from '../structures/linked-list';
+import { arrayToList } from '../utils/linked-list';
 
 /*
 Given the head of a singly linked list, return the middle node of the linked list.
@@ -35,13 +36,13 @@ bubble it back through the call stack.
 Time complexity: O(n)
 Space complexity: O(1)
 */
-function middleNode(head) {
+function middleNode(head: ListNode) {
   const result = _middleNode(head, 1);
 
   return result.node;
 }
 
-function _middleNode(head, count) {
+function _middleNode(head: ListNode, count: number) {
   if (head === null) {
     return { count, node: null };
   }
@@ -63,7 +64,7 @@ When fast reaches the end of the list, slow must be in the middle.
 Time complexity: O(n)
 Space complexity: O(1)
 */
-function middleNodeTwoPointers(head) {
+function middleNodeTwoPointers(head: ListNode) {
   let slow = head;
   let fast = head;
 
@@ -84,7 +85,7 @@ position within the list. Lastrly, it calculates the middle point
 Time complexity: O(n)
 Space complexity: O(n)
 */
-function middleNodeWithHash(head) {
+function middleNodeWithHash(head: ListNode) {
   const hash = {};
   let curr = head;
   let i = 1;

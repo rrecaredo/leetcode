@@ -1,6 +1,6 @@
-import { ListNode } from "../structures/linked-list.js";
+import { ListNode } from '../structures/linked-list';
 
-function insert(root, item) {
+function insert(root: ListNode, item: number) {
   const temp = new ListNode();
   let ptr = null;
   temp.val = item;

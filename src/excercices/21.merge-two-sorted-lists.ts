@@ -1,5 +1,6 @@
 import { expect } from 'earljs';
-import { arrayToList } from '../utils/linked-list.js';
+import { ListNode } from '../structures/linked-list';
+import { arrayToList } from '../utils/linked-list';
 
 /*
 You are given the heads of two sorted linked lists list1 and list2.
@@ -33,7 +34,7 @@ Both list1 and list2 are sorted in non-decreasing order.
 Time complexity: O(n + m)
 Space complexity: O(n + m)
 */
-function mergeTwoLists(list1, list2) {
+function mergeTwoLists(list1: ListNode, list2: ListNode) {
   if (list1 == null && list2 == null) {
     return null;
   }

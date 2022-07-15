@@ -1,5 +1,6 @@
 import { expect } from "earljs";
-import { arrayToList } from "../utils/linked-list.js";
+import { ListNode } from "../structures/linked-list";
+import { arrayToList } from "../utils/linked-list";
 
 /*
 Given the head of a singly linked list, reverse the list, and return the reversed list.
@@ -70,20 +71,20 @@ Curr: null
 Time complexity: O(n)
 Space complexity: O(1)
 */
-function reverseList(head) {
-  if (head == null || head.next == null) return head;
+function reverseList(head: ListNode) {
+   if (head == null || head.next == null) return head;
 
-  let prev = null;
-  let curr = head;
+   let prev = null;
+   let curr = head;
 
-  while (curr !== null) {
-    let next = curr.next;
-    curr.next = prev;
-    prev = curr;
-    curr = next;
-  }
+   while (curr !== null) {
+      let next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+   }
 
-  return prev;
+   return prev;
 }
 
 const l1 = arrayToList([1, 2, 3, 4, 5]);

@@ -1,7 +1,5 @@
-import { assert } from 'console';
 import { expect } from 'earljs';
-import { ListNode } from '../structures/linked-list.js';
-import { arrayToList } from '../utils/linked-list.js';
+import { ListNode } from '../structures/linked-list';
 
 /*
 Given the head of a linked list, return the node where the cycle begins. If there is no cycle, return null.
@@ -47,7 +45,7 @@ meand there is no cycke,
 Time complexity: O(n)
 Space complexity: O(n)
 */
-function detectCycle(head) {
+function detectCycle(head: ListNode) {
   const visited = new Set();
   let curr = head;
 
@@ -136,7 +134,7 @@ Here, by some point, it means that the fast pointer can complete the K * C dista
 of which it has already covered the Y distance.
 
 */
-function detectCycleFloyd(head) {
+function detectCycleFloyd(head: ListNode) {
   // Phase 1
   const cycleIntersection = doesContainCycle(head);
   if (cycleIntersection === null) return null;
@@ -146,7 +144,7 @@ function detectCycleFloyd(head) {
   return cycleEntryNode;
 }
 
-function doesContainCycle(head) {
+function doesContainCycle(head: ListNode) {
   if (head === null || head.next === null) return null;
 
   let tortoise = head;
@@ -164,7 +162,7 @@ function doesContainCycle(head) {
   return null;
 }
 
-function getCycleEntryNode(head, intersection) {
+function getCycleEntryNode(head: ListNode, intersection: ListNode) {
   let p1 = head;
   let p2 = intersection;
 

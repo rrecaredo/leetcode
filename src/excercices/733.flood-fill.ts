@@ -55,8 +55,6 @@ function floodFill(image: number[][], sr: number, sc: number, newColor: number) 
             return;
         }
 
-        console.log(2, { row, col })
-
         image[row][col] = newColor;
 
         fill(image, row - 1, col, oldColor, newColor);
