@@ -49,7 +49,7 @@ Follow up:
 
 Knowing we will use the same target to calculate if many sources are subsequence,
 this solutions builts a dictonary during instantiation wich maps the positions of
-all the charts from target.
+all the chars from target.
 
 Example:
 

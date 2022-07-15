@@ -1,4 +1,5 @@
 import { expect } from 'earljs';
+import { Queue } from '../structures/queue';
 import { BinaryTree } from '../structures/tree';
 
 /*
@@ -28,7 +29,7 @@ The number of nodes in the tree is in the range [0, 2000].
 /*
 I first went with a recursive approach on this one. For practicing mostly.
 I don't like the fact that we are mutating the array we receive by reference
-on each recursive call. I wouldn't write code like this for production and
+on each recursive call (in place). I wouldn't write code like this for production and
 I think it is a terrible practice which leads to bugs and memory leaks.
 
 Anyway, the idea is to use 2 extra variables that we pass along on each call
@@ -78,21 +79,21 @@ function levelOrderIterative(root: BinaryTree) {
     if (!root) {
         return [];
     }
-    const queue = [];
-    queue.push(root);
+    const queue = new Queue<BinaryTree>();
+    queue.enqueue(root);
     const result = [];
 
-    while (queue.length > 0) {
-        const size = queue.length;
+    while (!queue.isEmpty()) {
+        const size = queue.size;
         const temp = [];
         for (let i = 0; i < size; i++) {
-            const node = queue.shift();
+            const node = queue.dequeue();
             temp.push(node.val);
             if (node.left) {
-                queue.push(node.left);
+                queue.enqueue(node.left);
             }
             if (node.right) {
-                queue.push(node.right);
+                queue.enqueue(node.right);
             }
         }
         result.push(temp);

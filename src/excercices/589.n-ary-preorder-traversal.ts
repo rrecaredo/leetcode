@@ -1,4 +1,5 @@
 import { expect } from 'earljs';
+import { Stack } from '../structures/stack';
 import { TreeNode } from '../structures/tree';
 
 /*
@@ -40,14 +41,15 @@ function preorder(root: TreeNode) {
     if (root == null) return [];
 
     const result = [];
-    const stack = [root];
+    const stack = new Stack<TreeNode>();
+    stack.push(root);
 
-    while (stack.length) {
-        let current = stack.shift();
+    while (!stack.isEmpty()) {
+        let current = stack.pop();
         result.push(current.val);
 
         for (let i = current.children.length - 1; i >= 0; i--) {
-            stack.unshift(current.children[i]);
+            stack.push(current.children[i]);
         }
     }
 

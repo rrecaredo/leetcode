@@ -1,5 +1,6 @@
 import { expect } from 'earljs';
 import { BinaryTree } from './../structures/tree';
+import { Stack } from './../structures/stack';
 /*
 Given the root of a binary tree, determine if it is a valid binary search tree (BST).
 
@@ -34,19 +35,27 @@ function isValidBST(root: BinaryTree, max = Number.POSITIVE_INFINITY, min = Numb
     return isValidBST(root.left, root.val, min) && isValidBST(root.right, max, root.val);
 }
 
+type StackItem = {
+    current: BinaryTree;
+    max: number;
+    min: number;
+};
+
 function isValidBSTIterative(root: BinaryTree) {
     if (root === null) return true;
 
-    const stack = [{ current: root, max: Number.POSITIVE_INFINITY, min: Number.NEGATIVE_INFINITY }];
+    const stack = new Stack<StackItem>();
 
-    while (stack.length) {
-        const { current, max, min } = stack.shift();
+    stack.push({ current: root, max: Number.POSITIVE_INFINITY, min: Number.NEGATIVE_INFINITY });
+
+    while (stack.size) {
+        const { current, max, min } = stack.pop();
 
         if (current === null) continue;
         if (current.val <= min || current.val >= max) return false;
 
-        stack.unshift({ current: current.left, max: current.val, min });
-        stack.unshift({ current: current.right, max, min: current.val });
+        stack.push({ current: current.left, max: current.val, min });
+        stack.push({ current: current.right, max, min: current.val });
     }
 }
 

@@ -39,7 +39,7 @@ pos is -1 or a valid index in the linked-list.
 */
 
 /*
-My approach: Use a Set (hash) to keep track of which nodes were already visit
+My approach: Use a Set (hash) to keep track of which nodes were already visited
 while traversing the list. At the moment we find a node already in the Set,
 thad node is the beginning of the cycle. If we reach the end of the list, it
 meand there is no cycke,
