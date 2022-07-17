@@ -51,6 +51,8 @@ grid structure). I did it like this in order to keep the space complexity consta
 But in a production case situation, I wouldn't mutate the original 2d grid and I think
 it would lead to unpredictability and bugs.
 
+Time complexity: O(n * m) n -> num of rows and m -> num of columns
+Space complexity: O(1)
 */
 function numIslands(grid: string[][]): number {
     let islandCount = 0;
@@ -81,6 +83,16 @@ function sinkLand(grid: string[][], row: number, col: number) {
     if (col < grid[0].length - 1) sinkLand(grid, row, col + 1);
 }
 
+/*
+This is an alternative solution, very similar to the above one but instead of
+mutating the original grid to swtich '1's to '0's when visiting them, it uses an
+auxiliary visited grid. We use visited[][] to control the nodes we have already
+visited so that we don´t evaluate them again. Every time it finds a new island
+it marks all its land blocks and water borders as visited.
+
+Time complexity: O(n * m) n -> num of rows and m -> num of columns
+Space complexity: O(n * m) from the additional 2d array
+*/
 function numIslandsPure(grid: string[][]): number {
     let islandCount = 0;
     let n = grid.length;
